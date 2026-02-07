@@ -1,0 +1,122 @@
+today we discuss about parameterization. in that we changes dates of departure and arrival dates by using off set parameter.
+for that changes there are 2 types ,
+1. we changed departure date by using off set parameter, with that we need to use "ctrl" to open parameter window , in that we need to select alphabets from A toz in that there are small and caps , based on scenario we need to select according to our usage .in that we changed month/date/year . itneed to selected based on script in which format we have entered , like same we need to select.
+
+
+2. for changing of arraival day we selected different method for that we neeed to write function in code "lr_save_DATETIME"with that we can change date time .in that code we need to put date/month/year, in comment and we need to add "+"key for that comment. after that we need to run that code. 
+
+
+common functions in loadrunner:
+
+{
+   lr_output_message("welcome to loadrunner");
+   
+
+   lr_message("welcome to Jmeter");
+   
+   lr_error_message("failed message");
+
+   return 0;
+}
+
+output:
+
+Action.c(3): welcome to loadrunner
+welcome to Jmeter
+Action.c(7): Error: failed message
+
+
+
+
+
+
+date:26-12-2025;
+
+functions in loadrunner:
+
+Action()
+{ 
+	int pincode=560037;
+	char *city="banglore";
+	char *tool="welcome to loadrunner";
+	
+	lr_save_string(city,"new city");
+	lr_save_int(pincode,"areapincode");
+	lr_save_string(tool,"PTtool");
+	
+	lr_output_message(lr_eval_string("{new city}"));
+	lr_output_message(lr_eval_string("{areapincode}"));
+    lr_output_message(lr_eval_string("{PTtool}"));
+	
+		
+	return 0;
+}
+
+
+
+conversions :
+
+changing parameter values into variables:
+
+
+Action()
+{ 
+	char *city;
+	int pincode;
+	char *tool;
+	
+	lr_save_string("banglore","new city");
+	lr_save_int(560037,"areapincode");
+	lr_save_string("welcome to loadrunner","PTtool");
+	
+	city=lr_eval_string("{new city}");
+	pincode=atoi(lr_eval_string("{areapincode}"));
+	tool=lr_eval_string("{PTtool}");
+	
+	lr_output_message("%s",city);
+	lr_output_message("%d",pincode);
+	lr_output_message("%s",tool);
+		
+	return 0;
+}
+
+
+
+
+
+   c constants                                                   BEHAVIOUR     
+
+   LR_EXIST_VUSER                                                 Exit without any condition, and go directly to end action.
+   
+
+   LR_EXIT_ACTION_                                                Stop current action, and go to the next action.
+   AND_CONTINUE
+
+   LR_EXIT_ITERATION_                                            Stop current iteration, and go to the next iteration.
+   AND_CONTINUE                                                      If called from within a block iteration, only the block iteration will be exited, and not the global 
+                                                                  iteration.
+                                                    
+
+  LR_EXIT_VUSER_                                                 Run until the end of the current iteration and then exit.                                                
+  AFTER_ITERATION
+
+
+
+  LR_EXIT_VUSER_                                                Run until the end of the current action and then exit.
+  AFTER_ACTION
+
+
+
+  LR_EXIT_MAIN_                                                 Stop current global script run iteration, and go to the next iteration.
+  ITERATION_
+  AND_CONTINUE
+
+
+
+
+
+
+
+
+
+
